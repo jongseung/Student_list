@@ -26,10 +26,14 @@ namespace Student_list_Program
             // 학생 관리 프로그램 메뉴
             // 1. 학생 목록 2. 학생 추가 3.학생 삭제 4. 프로그램 종료
             // 4. 프로그램 종료 메뉴에 들어갈때까지 무한 반복
-            int select = 0 ;
+            int select = 0;
 
-            for(; select < 4 ;)
+            // 학생 목록 생성
+            Student[] std_list = new Student[0]; //빈 std_list 생성
+
+            for (; select < 4;)
             {
+                Console.Clear();
                 Console.WriteLine("1. 학생 목록 2. 학생 추가 3.학생 삭제 4. 프로그램 종료"); // 다른 번호를 눌러도 프로그램 종료
                 Console.Write("메뉴 번호를 입력하세요 : ");
                 select = int.Parse(Console.ReadLine()); //사용자 메뉴 선택
@@ -40,6 +44,24 @@ namespace Student_list_Program
                 }
                 else if (select == 2) // 2. 학생 추가
                 {
+                    Console.Clear();
+
+                    Array.Resize(ref std_list, std_list.Length + 1);
+
+                    int new_idx = std_list.Length - 1; //std_list 에 새로 추가할 student 인덱스 값
+
+                    std_list[new_idx] = new Student(); //std_list[new_idx]에 새로운 객체 생성
+
+                    Console.WriteLine("학생 정보 추가");
+                    Console.Write("학생 이름 : ");
+                    std_list[new_idx].name = Console.ReadLine();
+                    Console.Write("국어 성적 : ");
+                    std_list[new_idx].kor = int.Parse(Console.ReadLine());
+                    Console.Write("영어 성적 : ");
+                    std_list[new_idx].eng = int.Parse(Console.ReadLine());
+                    Console.Write("수학 성적 : ");
+                    std_list[new_idx].math = int.Parse(Console.ReadLine());
+                    Console.WriteLine("학생 정보 입력에 성공했습니다.");
 
                 }
                 else if (select == 3) // 3. 학생 삭제
@@ -49,10 +71,10 @@ namespace Student_list_Program
                 else //프로그램 종료
                 {
                     Console.WriteLine("프로그램을 종료합니다.");
-              
+
                 }
             }
-            
+
         }
     }
 }
