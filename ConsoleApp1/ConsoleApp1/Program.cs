@@ -41,6 +41,32 @@ namespace Student_list_Program
                 if (select == 1) // 1. 학생 목록
                 {
 
+                    Console.Clear();
+                    Console.WriteLine("1. 학생 목록 2. 학생 추가 3.학생 삭제 4. 프로그램 종료"); // 다른 번호를 눌러도 프로그램 종료
+                    Console.Write("메뉴 번호를 입력하세요 : ");
+                    select = int.Parse(Console.ReadLine()); //사용자 메뉴 선택
+
+                    if (select == 1) // 1. 학생 목록
+                    {
+                        Console.Clear();
+                        if (std_list.Length <= 0)
+                        {
+                            Console.WriteLine("학생정보가 없습니다.");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("순번\t\t이름\t\t국어\t\t영어\t\t수학");
+                            Console.WriteLine("----------------------------------------------------------------------------");
+                            int j = 0;
+                            foreach (var student in std_list)
+                            {
+                                j++;
+                                Console.WriteLine("{0 }\t\t{1 }\t\t{2 }\t\t{3 }\t\t{4 }", j, student.name, student.kor, student.eng, student.math);
+                            }
+                        }
+                    }
                 }
                 else if (select == 2) // 2. 학생 추가
                 {
